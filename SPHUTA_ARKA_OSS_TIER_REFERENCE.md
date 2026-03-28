@@ -1241,44 +1241,67 @@ Full starters (SaaS):
 
 ## 14. Maven Coordinates
 
-### GroupId
+All artifacts share GroupId `net.sphuta.arka`.
 
-| Layer | GroupId |
-|---|---|
-| Shared platform | `net.sphuta.arka` |
-| Email | `net.sphuta.arka` |
-| WhatsApp | `net.sphuta.arka` |
-| Slack | `net.sphuta.arka` |
-| SMS | `net.sphuta.arka` |
+### Shared Engine — OSS (4 capability modules)
 
-### OSS artifacts — all channels
+| ArtifactId | Java Package | Role |
+|---|---|---|
+| `sphuta-arka-core` | `net.sphuta.arka.core` | Shared SPIs, base exceptions, ApplicationCode |
+| `sphuta-arka-service` | `net.sphuta.arka.service` | Generic send orchestration engine |
+| `sphuta-arka-validation` | `net.sphuta.arka.validation` | Generic startup validation engine |
+| `sphuta-arka-provider-yaml` | `net.sphuta.arka.provider.yaml` | YAML-backed flow resolution engine |
 
-| ArtifactId | Channel |
-|---|---|
-| `sphuta-arka-core` | Shared |
-| `sphuta-arka-service` | Shared |
-| `sphuta-arka-validation` | Shared |
-| `sphuta-arka-provider-yaml` | Shared |
-| `sphuta-arka-email-core` | Email |
-| `sphuta-arka-email-transport-javamail` | Email |
-| `sphuta-arka-email-recipient` | Email |
-| `sphuta-arka-email-message` | Email |
-| `sphuta-arka-email-template-thymeleaf` | Email |
-| `sphuta-arka-email-starter` | Email |
-| `sphuta-arka-whatsapp-core` | WhatsApp |
-| `sphuta-arka-whatsapp-transport-meta` | WhatsApp |
-| `sphuta-arka-whatsapp-template-meta` | WhatsApp |
-| `sphuta-arka-whatsapp-starter` | WhatsApp |
-| `sphuta-arka-slack-core` | Slack (reserved) |
-| `sphuta-arka-slack-transport-webhook` | Slack (reserved) |
-| `sphuta-arka-slack-transport-api` | Slack (reserved) |
-| `sphuta-arka-slack-message-blockkit` | Slack (reserved) |
-| `sphuta-arka-slack-starter` | Slack (reserved) |
-| `sphuta-arka-sms-core` | SMS (reserved) |
-| `sphuta-arka-sms-transport-twilio` | SMS (reserved) |
-| `sphuta-arka-sms-transport-sns` | SMS (reserved) |
-| `sphuta-arka-sms-message-segment` | SMS (reserved) |
-| `sphuta-arka-sms-starter` | SMS (reserved) |
+### Email — OSS (5 capability + 1 starter)
+
+| ArtifactId | Java Package | Role |
+|---|---|---|
+| `sphuta-arka-email-core` | `net.sphuta.arka.email` | Email contracts, models, codes, exceptions, adapter beans |
+| `sphuta-arka-email-transport-javamail` | `net.sphuta.arka.email.transport.javamail` | SMTP transport, typed exception translation |
+| `sphuta-arka-email-recipient` | `net.sphuta.arka.email.recipient` | Recipient normalization, dedupe, RecipientAction policy |
+| `sphuta-arka-email-message` | `net.sphuta.arka.email.message` | MIME construction, attachment binding |
+| `sphuta-arka-email-template-thymeleaf` | `net.sphuta.arka.email.template.thymeleaf` | Thymeleaf rendering, template probe |
+| `sphuta-arka-email-starter` | — | Composition: shared OSS engine + email OSS edge |
+
+### WhatsApp — OSS (3 capability + 1 starter)
+
+| ArtifactId | Java Package | Role |
+|---|---|---|
+| `sphuta-arka-whatsapp-core` | `net.sphuta.arka.whatsapp` | WhatsApp contracts, models, codes, exceptions, adapter beans |
+| `sphuta-arka-whatsapp-transport-meta` | `net.sphuta.arka.whatsapp.transport.meta` | Meta Cloud API send transport, exception translation |
+| `sphuta-arka-whatsapp-template-meta` | `net.sphuta.arka.whatsapp.template.meta` | Meta Template Management API, sync, approval check |
+| `sphuta-arka-whatsapp-starter` | — | Composition: shared OSS engine + whatsapp OSS edge |
+
+### Slack — OSS Reserved (4 capability + 1 starter)
+
+| ArtifactId | Java Package | Role | Status |
+|---|---|---|---|
+| `sphuta-arka-slack-core` | `net.sphuta.arka.slack` | Slack contracts, models, codes, exceptions, adapter beans | Reserved |
+| `sphuta-arka-slack-transport-webhook` | `net.sphuta.arka.slack.transport.webhook` | Slack Incoming Webhooks transport | Reserved |
+| `sphuta-arka-slack-transport-api` | `net.sphuta.arka.slack.transport.api` | Slack Web API transport (chat.postMessage) | Reserved |
+| `sphuta-arka-slack-message-blockkit` | `net.sphuta.arka.slack.message.blockkit` | Block Kit message construction | Reserved |
+| `sphuta-arka-slack-starter` | — | Composition: shared OSS engine + slack OSS edge | Reserved |
+
+### SMS — OSS Reserved (4 capability + 1 starter)
+
+| ArtifactId | Java Package | Role | Status |
+|---|---|---|---|
+| `sphuta-arka-sms-core` | `net.sphuta.arka.sms` | SMS contracts, models, codes, exceptions, adapter beans | Reserved |
+| `sphuta-arka-sms-transport-twilio` | `net.sphuta.arka.sms.transport.twilio` | Twilio SMS transport | Reserved |
+| `sphuta-arka-sms-transport-sns` | `net.sphuta.arka.sms.transport.sns` | AWS SNS SMS transport | Reserved |
+| `sphuta-arka-sms-message-segment` | `net.sphuta.arka.sms.message.segment` | SMS segment splitting, GSM-7/UCS-2 encoding | Reserved |
+| `sphuta-arka-sms-starter` | — | Composition: shared OSS engine + sms OSS edge | Reserved |
+
+### OSS Artifact Totals
+
+| Channel | Capability | Starters | Total |
+|---|---|---|---|
+| Shared engine | 4 | — | 4 |
+| Email | 5 | 1 | 6 |
+| WhatsApp | 3 | 1 | 4 |
+| Slack (reserved) | 4 | 1 | 5 |
+| SMS (reserved) | 4 | 1 | 5 |
+| **All channels** | **20** | **4** | **24** |
 
 ---
 
