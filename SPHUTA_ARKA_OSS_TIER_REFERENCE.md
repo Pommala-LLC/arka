@@ -1,4 +1,4 @@
-# SPHUTA Arka — OSS Tier Complete Reference
+#  Arka — OSS Tier Complete Reference
 
 > **Scope:** All application codes, exceptions, business rules, and validations for the OSS tier across all channels
 > **Architecture:** Shared engine + channel edges
@@ -40,55 +40,55 @@ OSS is the minimal self-managed runtime. Synchronous single-send. No async, no r
 
 | Module | Artifact ID | Java Package | Role |
 |---|---|---|---|
-| Core | `sphuta-arka-core` | `net.sphuta.arka.core` | Shared SPIs, base exceptions, ApplicationCode, ConfigCategory |
-| Service | `sphuta-arka-service` | `net.sphuta.arka.service` | Generic send orchestration engine |
-| Validation | `sphuta-arka-validation` | `net.sphuta.arka.validation` | Generic startup validation engine |
-| Provider YAML | `sphuta-arka-provider-yaml` | `net.sphuta.arka.provider.yaml` | YAML-backed flow resolution engine |
+| Core | `-arka-core` | `net..arka.core` | Shared SPIs, base exceptions, ApplicationCode, ConfigCategory |
+| Service | `-arka-service` | `net..arka.service` | Generic send orchestration engine |
+| Validation | `-arka-validation` | `net..arka.validation` | Generic startup validation engine |
+| Provider YAML | `-arka-provider-yaml` | `net..arka.provider.yaml` | YAML-backed flow resolution engine |
 
 ### Email edge — OSS (5 modules)
 
 | Module | Artifact ID | Java Package | Role |
 |---|---|---|---|
-| Email Core | `sphuta-arka-email-core` | `net.sphuta.arka.email` | Email contracts, models, EMAIL-* codes, exceptions, adapter beans |
-| SMTP Transport | `sphuta-arka-email-transport-javamail` | `net.sphuta.arka.email.transport.javamail` | SMTP transport with typed exception translation |
-| Recipient | `sphuta-arka-email-recipient` | `net.sphuta.arka.email.recipient` | Recipient normalization, validation, deduplication |
-| Message | `sphuta-arka-email-message` | `net.sphuta.arka.email.message` | MIME message construction and final message assembly |
-| Template Thymeleaf | `sphuta-arka-email-template-thymeleaf` | `net.sphuta.arka.email.template.thymeleaf` | Thymeleaf-based template rendering |
+| Email Core | `-arka-email-core` | `net..arka.email` | Email contracts, models, EMAIL-* codes, exceptions, adapter beans |
+| SMTP Transport | `-arka-email-transport-javamail` | `net..arka.email.transport.javamail` | SMTP transport with typed exception translation |
+| Recipient | `-arka-email-recipient` | `net..arka.email.recipient` | Recipient normalization, validation, deduplication |
+| Message | `-arka-email-message` | `net..arka.email.message` | MIME message construction and final message assembly |
+| Template Thymeleaf | `-arka-email-template-thymeleaf` | `net..arka.email.template.thymeleaf` | Thymeleaf-based template rendering |
 
 ### WhatsApp edge — OSS (3 modules)
 
 | Module | Artifact ID | Java Package | Role |
 |---|---|---|---|
-| WhatsApp Core | `sphuta-arka-whatsapp-core` | `net.sphuta.arka.whatsapp` | WhatsApp contracts, models, WA-* codes, exceptions, adapter beans |
-| Meta Transport | `sphuta-arka-whatsapp-transport-meta` | `net.sphuta.arka.whatsapp.transport.meta` | Meta Cloud API send transport with typed exception translation |
-| Template Meta | `sphuta-arka-whatsapp-template-meta` | `net.sphuta.arka.whatsapp.template.meta` | Meta Template Management API — sync, approval check, category rules |
+| WhatsApp Core | `-arka-whatsapp-core` | `net..arka.whatsapp` | WhatsApp contracts, models, WA-* codes, exceptions, adapter beans |
+| Meta Transport | `-arka-whatsapp-transport-meta` | `net..arka.whatsapp.transport.meta` | Meta Cloud API send transport with typed exception translation |
+| Template Meta | `-arka-whatsapp-template-meta` | `net..arka.whatsapp.template.meta` | Meta Template Management API — sync, approval check, category rules |
 
 ### Slack edge — OSS reserved (4 modules)
 
 | Module | Artifact ID | Java Package | Role |
 |---|---|---|---|
-| Slack Core | `sphuta-arka-slack-core` | `net.sphuta.arka.slack` | Slack contracts, models, SLACK-* codes, exceptions, adapter beans |
-| Webhook Transport | `sphuta-arka-slack-transport-webhook` | `net.sphuta.arka.slack.transport.webhook` | Slack Incoming Webhooks transport |
-| API Transport | `sphuta-arka-slack-transport-api` | `net.sphuta.arka.slack.transport.api` | Slack Web API transport (chat.postMessage) |
-| Block Kit Message | `sphuta-arka-slack-message-blockkit` | `net.sphuta.arka.slack.message.blockkit` | Block Kit message construction |
+| Slack Core | `-arka-slack-core` | `net..arka.slack` | Slack contracts, models, SLACK-* codes, exceptions, adapter beans |
+| Webhook Transport | `-arka-slack-transport-webhook` | `net..arka.slack.transport.webhook` | Slack Incoming Webhooks transport |
+| API Transport | `-arka-slack-transport-api` | `net..arka.slack.transport.api` | Slack Web API transport (chat.postMessage) |
+| Block Kit Message | `-arka-slack-message-blockkit` | `net..arka.slack.message.blockkit` | Block Kit message construction |
 
 ### SMS edge — OSS reserved (4 modules)
 
 | Module | Artifact ID | Java Package | Role |
 |---|---|---|---|
-| SMS Core | `sphuta-arka-sms-core` | `net.sphuta.arka.sms` | SMS contracts, models, SMS-* codes, exceptions, adapter beans |
-| Twilio Transport | `sphuta-arka-sms-transport-twilio` | `net.sphuta.arka.sms.transport.twilio` | Twilio SMS transport |
-| SNS Transport | `sphuta-arka-sms-transport-sns` | `net.sphuta.arka.sms.transport.sns` | AWS SNS SMS transport |
-| Segment Message | `sphuta-arka-sms-message-segment` | `net.sphuta.arka.sms.message.segment` | SMS segment splitting and encoding |
+| SMS Core | `-arka-sms-core` | `net..arka.sms` | SMS contracts, models, SMS-* codes, exceptions, adapter beans |
+| Twilio Transport | `-arka-sms-transport-twilio` | `net..arka.sms.transport.twilio` | Twilio SMS transport |
+| SNS Transport | `-arka-sms-transport-sns` | `net..arka.sms.transport.sns` | AWS SNS SMS transport |
+| Segment Message | `-arka-sms-message-segment` | `net..arka.sms.message.segment` | SMS segment splitting and encoding |
 
 ### Composition starters
 
 | Channel | Artifact ID | Bundles |
 |---|---|---|
-| Email | `sphuta-arka-email-starter` | 4 shared OSS engine + 5 Email OSS edge |
-| WhatsApp | `sphuta-arka-whatsapp-starter` | 4 shared OSS engine + 3 WhatsApp OSS edge |
-| Slack | `sphuta-arka-slack-starter` | 4 shared OSS engine + 4 Slack OSS edge |
-| SMS | `sphuta-arka-sms-starter` | 4 shared OSS engine + 4 SMS OSS edge |
+| Email | `-arka-email-starter` | 4 shared OSS engine + 5 Email OSS edge |
+| WhatsApp | `-arka-whatsapp-starter` | 4 shared OSS engine + 3 WhatsApp OSS edge |
+| Slack | `-arka-slack-starter` | 4 shared OSS engine + 4 Slack OSS edge |
+| SMS | `-arka-sms-starter` | 4 shared OSS engine + 4 SMS OSS edge |
 
 ### OSS artifact counts
 
@@ -104,7 +104,7 @@ OSS is the minimal self-managed runtime. Synchronous single-send. No async, no r
 
 ## 2. Shared Engine — Application Codes
 
-Shared engine codes live in `sphuta-arka-core` in the `net.sphuta.arka.core.code` package. Every code implements `ApplicationCode` with `code()` + `defaultMessage()`.
+Shared engine codes live in `-arka-core` in the `net..arka.core.code` package. Every code implements `ApplicationCode` with `code()` + `defaultMessage()`.
 
 ### `ArkaCoreCode` — `ARKA-CORE-*`
 
@@ -159,7 +159,7 @@ Client descriptor uniqueness codes.
 
 ## 3. Shared Engine — Exception Hierarchy
 
-All shared exceptions live in `net.sphuta.arka.core.exception` within `sphuta-arka-core`. Every exception carries an `ApplicationCode`. Three constructors per platform standard.
+All shared exceptions live in `net..arka.core.exception` within `-arka-core`. Every exception carries an `ApplicationCode`. Three constructors per platform standard.
 
 ```
 ArkaApplicationException (abstract — carries ApplicationCode)
@@ -188,7 +188,7 @@ SmsApplicationException extends ArkaApplicationException
 
 ## 4. Shared Engine — Per-Module Reference
 
-### 4.1 `sphuta-arka-core`
+### 4.1 `-arka-core`
 
 **Role:** Pure contracts — all shared SPIs, base exception hierarchy, `ApplicationCode`, `ConfigCategory`, generic adapter contracts.
 
@@ -230,7 +230,7 @@ SmsApplicationException extends ArkaApplicationException
 | 3-constructor discipline | All concrete exceptions | 1-arg, 2-arg, 3-arg |
 | Exhaustive switch on `ConfigCategory` | Required by handler implementations | Compiler-enforced switch |
 
-### 4.2 `sphuta-arka-service`
+### 4.2 `-arka-service`
 
 **Role:** Generic send orchestration engine. Delegates to channel adapters for flow resolution, destination handling, message building, and transport.
 
@@ -248,7 +248,7 @@ send(SendCommand)
 
 No retry loop. No circuit breaker. No async timeout. No idempotency check. Those activate when PaaS modules are on classpath.
 
-### 4.3 `sphuta-arka-validation`
+### 4.3 `-arka-validation`
 
 **Role:** Generic startup validation engine. Collects all errors before throwing — operator sees the complete picture.
 
@@ -259,7 +259,7 @@ No retry loop. No circuit breaker. No async timeout. No idempotency check. Those
 | Collect ALL errors before throwing | Error list accumulation → single throw |
 | Delegates to channel `FlowValidator<F>` | Channel provides rules |
 
-### 4.4 `sphuta-arka-provider-yaml`
+### 4.4 `-arka-provider-yaml`
 
 **Role:** YAML-backed flow resolution engine. Reads YAML properties, delegates to channel `FlowConfigMapper<F>`.
 
@@ -277,7 +277,7 @@ No retry loop. No circuit breaker. No async timeout. No idempotency check. Those
 
 ### 5.1 Email Application Codes
 
-All Email OSS codes live in `sphuta-arka-email-core` in `net.sphuta.arka.email.code`.
+All Email OSS codes live in `-arka-email-core` in `net..arka.email.code`.
 
 #### `EmailCoreCode` — `EMAIL-CORE-*`
 
@@ -430,7 +430,7 @@ EmailApplicationException extends ArkaApplicationException
 
 ### 5.4 Email Per-Module Reference
 
-#### `sphuta-arka-email-core`
+#### `-arka-email-core`
 
 **Role:** Email contracts, models, codes, exceptions, and all adapter beans for shared engines.
 
@@ -462,7 +462,7 @@ EmailApplicationException extends ArkaApplicationException
 | `code` | 7 code enums (36 codes total) |
 | `exception` | `EmailApplicationException` (abstract), 7 concrete types |
 
-#### `sphuta-arka-email-transport-javamail`
+#### `-arka-email-transport-javamail`
 
 **Role:** SMTP transport with typed exception translation.
 
@@ -492,7 +492,7 @@ arka:
       write-timeout: 10s
 ```
 
-#### `sphuta-arka-email-recipient`
+#### `-arka-email-recipient`
 
 **Role:** Recipient normalization, validation, and deduplication.
 
@@ -531,7 +531,7 @@ arka:
         dedupe-enabled: true
 ```
 
-#### `sphuta-arka-email-message`
+#### `-arka-email-message`
 
 **Role:** MIME message construction and final message assembly.
 
@@ -546,7 +546,7 @@ arka:
 | MIME construction failures translated | `EMAIL-MSG-5002` |
 | `FinalEmailMessage` is fully immutable | `List.copyOf()` |
 
-#### `sphuta-arka-email-template-thymeleaf`
+#### `-arka-email-template-thymeleaf`
 
 **Role:** Thymeleaf-based template rendering with template existence probing.
 
@@ -580,7 +580,7 @@ arka:
 
 ### 6.1 WhatsApp Application Codes
 
-All WhatsApp OSS codes live in `sphuta-arka-whatsapp-core` in `net.sphuta.arka.whatsapp.code`.
+All WhatsApp OSS codes live in `-arka-whatsapp-core` in `net..arka.whatsapp.code`.
 
 #### `WhatsAppCoreCode` — `WA-CORE-*`
 
@@ -762,7 +762,7 @@ WhatsAppApplicationException extends ArkaApplicationException
 
 ### 6.3 WhatsApp Per-Module Reference
 
-#### `sphuta-arka-whatsapp-core`
+#### `-arka-whatsapp-core`
 
 **Role:** WhatsApp contracts, models, WA-* codes, exception hierarchy, all adapter beans. Includes `WhatsAppConversationWindowService` (WhatsApp-only, not in shared core).
 
@@ -782,7 +782,7 @@ WhatsAppApplicationException extends ArkaApplicationException
 | `scheduler` | `WhatsAppSchedulerPayloadHandler` |
 | `client` | `WhatsAppChannelClientDescriptor` |
 
-#### `sphuta-arka-whatsapp-transport-meta`
+#### `-arka-whatsapp-transport-meta`
 
 **Role:** Meta Cloud API send transport with typed exception translation.
 
@@ -800,7 +800,7 @@ WhatsAppApplicationException extends ArkaApplicationException
 
 **Hard prerequisite:** `arka.whatsapp.transport.access-token` must be configured. Startup fails if missing.
 
-#### `sphuta-arka-whatsapp-template-meta`
+#### `-arka-whatsapp-template-meta`
 
 **Role:** Meta Template Management API — sync, approval check, category-aware rate limit awareness.
 
@@ -877,7 +877,7 @@ SlackApplicationException extends ArkaApplicationException
 
 ### 7.3 Slack Per-Module Reference (Reserved)
 
-#### `sphuta-arka-slack-core`
+#### `-arka-slack-core`
 
 **Role:** Slack contracts, models, SLACK-* codes, exceptions, adapter beans.
 
@@ -897,19 +897,19 @@ SlackApplicationException extends ArkaApplicationException
 | `scheduler` | `SlackSchedulerPayloadHandler` |
 | `client` | `SlackChannelClientDescriptor` |
 
-#### `sphuta-arka-slack-transport-webhook`
+#### `-arka-slack-transport-webhook`
 
 **Role:** Slack Incoming Webhooks transport. Simple HTTPS POST to webhook URL.
 
 **Hard prerequisite:** Webhook URL configured.
 
-#### `sphuta-arka-slack-transport-api`
+#### `-arka-slack-transport-api`
 
 **Role:** Slack Web API transport (chat.postMessage). Supports channel routing, DM routing, thread replies.
 
 **Hard prerequisite:** Slack Bot Token configured.
 
-#### `sphuta-arka-slack-message-blockkit`
+#### `-arka-slack-message-blockkit`
 
 **Role:** Slack Block Kit message construction. Sections, actions, context, dividers, images, buttons.
 
@@ -954,7 +954,7 @@ SmsApplicationException extends ArkaApplicationException
 
 ### 8.3 SMS Per-Module Reference (Reserved)
 
-#### `sphuta-arka-sms-core`
+#### `-arka-sms-core`
 
 **Role:** SMS contracts, models, SMS-* codes, exceptions, adapter beans.
 
@@ -974,7 +974,7 @@ SmsApplicationException extends ArkaApplicationException
 | `scheduler` | `SmsSchedulerPayloadHandler` |
 | `client` | `SmsChannelClientDescriptor` |
 
-#### `sphuta-arka-sms-transport-twilio`
+#### `-arka-sms-transport-twilio`
 
 **Role:** Twilio SMS transport. Sends via Twilio Messages API.
 
@@ -992,7 +992,7 @@ arka:
         from-number: ${TWILIO_FROM_NUMBER}
 ```
 
-#### `sphuta-arka-sms-transport-sns`
+#### `-arka-sms-transport-sns`
 
 **Role:** AWS SNS SMS transport. Sends via AWS SNS Publish API.
 
@@ -1006,11 +1006,11 @@ arka:
     transport:
       sns:
         region: us-east-1
-        sender-id: SPHUTA
+        sender-id: 
         message-type: Transactional
 ```
 
-#### `sphuta-arka-sms-message-segment`
+#### `-arka-sms-message-segment`
 
 **Role:** SMS segment splitting and encoding. Handles GSM-7 vs UCS-2 encoding, segment counting, multipart concatenation.
 
@@ -1177,36 +1177,36 @@ Per the tier isolation rule, the following are NOT in any OSS core module. Each 
 
 | Contract | Lives in shared module |
 |---|---|
-| `RetryPolicy` (engine) | `sphuta-arka-retry-fixed` |
-| `CircuitBreaker` (engine) | `sphuta-arka-circuit-breaker` |
-| Health aggregation | `sphuta-arka-health` |
-| Observability engine | `sphuta-arka-observability` |
-| Security framework | `sphuta-arka-security` |
-| Audit engine | `sphuta-arka-audit` |
-| Outbox engine | `sphuta-arka-outbox` |
-| Idempotency engine | `sphuta-arka-idempotency` |
-| DB provider engine | `sphuta-arka-provider-db` |
-| Hybrid provider engine | `sphuta-arka-provider-hybrid` |
-| REST API surface | `sphuta-arka-web` |
-| Web console shell | `sphuta-arka-web-console` |
-| Typed client | `sphuta-arka-client` |
+| `RetryPolicy` (engine) | `-arka-retry-fixed` |
+| `CircuitBreaker` (engine) | `-arka-circuit-breaker` |
+| Health aggregation | `-arka-health` |
+| Observability engine | `-arka-observability` |
+| Security framework | `-arka-security` |
+| Audit engine | `-arka-audit` |
+| Outbox engine | `-arka-outbox` |
+| Idempotency engine | `-arka-idempotency` |
+| DB provider engine | `-arka-provider-db` |
+| Hybrid provider engine | `-arka-provider-hybrid` |
+| REST API surface | `-arka-web` |
+| Web console shell | `-arka-web-console` |
+| Typed client | `-arka-client` |
 
 ### Contracts owned by SaaS modules (shared)
 
 | Contract | Lives in shared module |
 |---|---|
-| Tenant engine | `sphuta-arka-tenant` |
-| DLQ engine | `sphuta-arka-dlq` |
-| Scheduler engine | `sphuta-arka-scheduler` |
+| Tenant engine | `-arka-tenant` |
+| DLQ engine | `-arka-dlq` |
+| Scheduler engine | `-arka-scheduler` |
 
 ### Channel-specific PaaS contracts
 
 | Contract | Lives in channel module |
 |---|---|
-| WhatsApp webhook status | `sphuta-arka-whatsapp-webhook-status` |
-| WhatsApp console screens | `sphuta-arka-whatsapp-web-console` |
-| Slack console screens | `sphuta-arka-slack-web-console` (reserved) |
-| SMS webhook status | `sphuta-arka-sms-webhook-status` (reserved) |
+| WhatsApp webhook status | `-arka-whatsapp-webhook-status` |
+| WhatsApp console screens | `-arka-whatsapp-web-console` |
+| Slack console screens | `-arka-slack-web-console` (reserved) |
+| SMS webhook status | `-arka-sms-webhook-status` (reserved) |
 
 ---
 
@@ -1214,83 +1214,83 @@ Per the tier isolation rule, the following are NOT in any OSS core module. Each 
 
 | Channel | Starter | Shared OSS | Channel OSS edge | Total |
 |---|---|---|---|---|
-| Email | `sphuta-arka-email-starter` | core, service, validation, provider-yaml | email-core, email-transport-javamail, email-recipient, email-message, email-template-thymeleaf | 9 |
-| WhatsApp | `sphuta-arka-whatsapp-starter` | core, service, validation, provider-yaml | whatsapp-core, whatsapp-transport-meta, whatsapp-template-meta | 7 |
-| Slack | `sphuta-arka-slack-starter` | core, service, validation, provider-yaml | slack-core, slack-transport-webhook, slack-transport-api, slack-message-blockkit | 8 |
-| SMS | `sphuta-arka-sms-starter` | core, service, validation, provider-yaml | sms-core, sms-transport-twilio, sms-transport-sns, sms-message-segment | 8 |
+| Email | `-arka-email-starter` | core, service, validation, provider-yaml | email-core, email-transport-javamail, email-recipient, email-message, email-template-thymeleaf | 9 |
+| WhatsApp | `-arka-whatsapp-starter` | core, service, validation, provider-yaml | whatsapp-core, whatsapp-transport-meta, whatsapp-template-meta | 7 |
+| Slack | `-arka-slack-starter` | core, service, validation, provider-yaml | slack-core, slack-transport-webhook, slack-transport-api, slack-message-blockkit | 8 |
+| SMS | `-arka-sms-starter` | core, service, validation, provider-yaml | sms-core, sms-transport-twilio, sms-transport-sns, sms-message-segment | 8 |
 
 Enterprise starters (PaaS):
 
 | Channel | Starter | Adds |
 |---|---|---|
-| Email | `sphuta-arka-email-starter-enterprise` | OSS starter + all shared PaaS modules |
-| WhatsApp | `sphuta-arka-whatsapp-starter-enterprise` | OSS starter + all shared PaaS modules + WhatsApp PaaS edge |
-| Slack | `sphuta-arka-slack-starter-enterprise` | OSS starter + all shared PaaS modules + Slack PaaS edge |
-| SMS | `sphuta-arka-sms-starter-enterprise` | OSS starter + all shared PaaS modules + SMS PaaS edge |
+| Email | `-arka-email-starter-enterprise` | OSS starter + all shared PaaS modules |
+| WhatsApp | `-arka-whatsapp-starter-enterprise` | OSS starter + all shared PaaS modules + WhatsApp PaaS edge |
+| Slack | `-arka-slack-starter-enterprise` | OSS starter + all shared PaaS modules + Slack PaaS edge |
+| SMS | `-arka-sms-starter-enterprise` | OSS starter + all shared PaaS modules + SMS PaaS edge |
 
 Full starters (SaaS):
 
 | Channel | Starter | Adds |
 |---|---|---|
-| Email | `sphuta-arka-email-starter-full` | Enterprise starter + all shared SaaS modules |
-| WhatsApp | `sphuta-arka-whatsapp-starter-full` | Enterprise starter + all shared SaaS modules |
-| Slack | `sphuta-arka-slack-starter-full` | Enterprise starter + all shared SaaS modules |
-| SMS | `sphuta-arka-sms-starter-full` | Enterprise starter + all shared SaaS modules |
+| Email | `-arka-email-starter-full` | Enterprise starter + all shared SaaS modules |
+| WhatsApp | `-arka-whatsapp-starter-full` | Enterprise starter + all shared SaaS modules |
+| Slack | `-arka-slack-starter-full` | Enterprise starter + all shared SaaS modules |
+| SMS | `-arka-sms-starter-full` | Enterprise starter + all shared SaaS modules |
 
 ---
 
 ## 14. Maven Coordinates
 
-All artifacts share GroupId `net.sphuta.arka`.
+All artifacts share GroupId `net..arka`.
 
 ### Shared Engine — OSS (4 capability modules)
 
 | ArtifactId | Java Package | Role |
 |---|---|---|
-| `sphuta-arka-core` | `net.sphuta.arka.core` | Shared SPIs, base exceptions, ApplicationCode |
-| `sphuta-arka-service` | `net.sphuta.arka.service` | Generic send orchestration engine |
-| `sphuta-arka-validation` | `net.sphuta.arka.validation` | Generic startup validation engine |
-| `sphuta-arka-provider-yaml` | `net.sphuta.arka.provider.yaml` | YAML-backed flow resolution engine |
+| `-arka-core` | `net..arka.core` | Shared SPIs, base exceptions, ApplicationCode |
+| `-arka-service` | `net..arka.service` | Generic send orchestration engine |
+| `-arka-validation` | `net..arka.validation` | Generic startup validation engine |
+| `-arka-provider-yaml` | `net..arka.provider.yaml` | YAML-backed flow resolution engine |
 
 ### Email — OSS (5 capability + 1 starter)
 
 | ArtifactId | Java Package | Role |
 |---|---|---|
-| `sphuta-arka-email-core` | `net.sphuta.arka.email` | Email contracts, models, codes, exceptions, adapter beans |
-| `sphuta-arka-email-transport-javamail` | `net.sphuta.arka.email.transport.javamail` | SMTP transport, typed exception translation |
-| `sphuta-arka-email-recipient` | `net.sphuta.arka.email.recipient` | Recipient normalization, dedupe, RecipientAction policy |
-| `sphuta-arka-email-message` | `net.sphuta.arka.email.message` | MIME construction, attachment binding |
-| `sphuta-arka-email-template-thymeleaf` | `net.sphuta.arka.email.template.thymeleaf` | Thymeleaf rendering, template probe |
-| `sphuta-arka-email-starter` | — | Composition: shared OSS engine + email OSS edge |
+| `-arka-email-core` | `net..arka.email` | Email contracts, models, codes, exceptions, adapter beans |
+| `-arka-email-transport-javamail` | `net..arka.email.transport.javamail` | SMTP transport, typed exception translation |
+| `-arka-email-recipient` | `net..arka.email.recipient` | Recipient normalization, dedupe, RecipientAction policy |
+| `-arka-email-message` | `net..arka.email.message` | MIME construction, attachment binding |
+| `-arka-email-template-thymeleaf` | `net..arka.email.template.thymeleaf` | Thymeleaf rendering, template probe |
+| `-arka-email-starter` | — | Composition: shared OSS engine + email OSS edge |
 
 ### WhatsApp — OSS (3 capability + 1 starter)
 
 | ArtifactId | Java Package | Role |
 |---|---|---|
-| `sphuta-arka-whatsapp-core` | `net.sphuta.arka.whatsapp` | WhatsApp contracts, models, codes, exceptions, adapter beans |
-| `sphuta-arka-whatsapp-transport-meta` | `net.sphuta.arka.whatsapp.transport.meta` | Meta Cloud API send transport, exception translation |
-| `sphuta-arka-whatsapp-template-meta` | `net.sphuta.arka.whatsapp.template.meta` | Meta Template Management API, sync, approval check |
-| `sphuta-arka-whatsapp-starter` | — | Composition: shared OSS engine + whatsapp OSS edge |
+| `-arka-whatsapp-core` | `net..arka.whatsapp` | WhatsApp contracts, models, codes, exceptions, adapter beans |
+| `-arka-whatsapp-transport-meta` | `net..arka.whatsapp.transport.meta` | Meta Cloud API send transport, exception translation |
+| `-arka-whatsapp-template-meta` | `net..arka.whatsapp.template.meta` | Meta Template Management API, sync, approval check |
+| `-arka-whatsapp-starter` | — | Composition: shared OSS engine + whatsapp OSS edge |
 
 ### Slack — OSS Reserved (4 capability + 1 starter)
 
 | ArtifactId | Java Package | Role | Status |
 |---|---|---|---|
-| `sphuta-arka-slack-core` | `net.sphuta.arka.slack` | Slack contracts, models, codes, exceptions, adapter beans | Reserved |
-| `sphuta-arka-slack-transport-webhook` | `net.sphuta.arka.slack.transport.webhook` | Slack Incoming Webhooks transport | Reserved |
-| `sphuta-arka-slack-transport-api` | `net.sphuta.arka.slack.transport.api` | Slack Web API transport (chat.postMessage) | Reserved |
-| `sphuta-arka-slack-message-blockkit` | `net.sphuta.arka.slack.message.blockkit` | Block Kit message construction | Reserved |
-| `sphuta-arka-slack-starter` | — | Composition: shared OSS engine + slack OSS edge | Reserved |
+| `-arka-slack-core` | `net..arka.slack` | Slack contracts, models, codes, exceptions, adapter beans | Reserved |
+| `-arka-slack-transport-webhook` | `net..arka.slack.transport.webhook` | Slack Incoming Webhooks transport | Reserved |
+| `-arka-slack-transport-api` | `net..arka.slack.transport.api` | Slack Web API transport (chat.postMessage) | Reserved |
+| `-arka-slack-message-blockkit` | `net..arka.slack.message.blockkit` | Block Kit message construction | Reserved |
+| `-arka-slack-starter` | — | Composition: shared OSS engine + slack OSS edge | Reserved |
 
 ### SMS — OSS Reserved (4 capability + 1 starter)
 
 | ArtifactId | Java Package | Role | Status |
 |---|---|---|---|
-| `sphuta-arka-sms-core` | `net.sphuta.arka.sms` | SMS contracts, models, codes, exceptions, adapter beans | Reserved |
-| `sphuta-arka-sms-transport-twilio` | `net.sphuta.arka.sms.transport.twilio` | Twilio SMS transport | Reserved |
-| `sphuta-arka-sms-transport-sns` | `net.sphuta.arka.sms.transport.sns` | AWS SNS SMS transport | Reserved |
-| `sphuta-arka-sms-message-segment` | `net.sphuta.arka.sms.message.segment` | SMS segment splitting, GSM-7/UCS-2 encoding | Reserved |
-| `sphuta-arka-sms-starter` | — | Composition: shared OSS engine + sms OSS edge | Reserved |
+| `-arka-sms-core` | `net..arka.sms` | SMS contracts, models, codes, exceptions, adapter beans | Reserved |
+| `-arka-sms-transport-twilio` | `net..arka.sms.transport.twilio` | Twilio SMS transport | Reserved |
+| `-arka-sms-transport-sns` | `net..arka.sms.transport.sns` | AWS SNS SMS transport | Reserved |
+| `-arka-sms-message-segment` | `net..arka.sms.message.segment` | SMS segment splitting, GSM-7/UCS-2 encoding | Reserved |
+| `-arka-sms-starter` | — | Composition: shared OSS engine + sms OSS edge | Reserved |
 
 ### OSS Artifact Totals
 
@@ -1305,6 +1305,6 @@ All artifacts share GroupId `net.sphuta.arka`.
 
 ---
 
-*SPHUTA Arka — OSS Tier Complete Reference — All Channels — Frozen Standard — March 2026*
+* Arka — OSS Tier Complete Reference — All Channels — Frozen Standard — March 2026*
 *Tier isolation rule: OSS core owns only OSS contracts. PaaS modules own PaaS contracts. SaaS modules own SaaS contracts.*
 *All decisions in this document are locked. Changes require explicit review.*
