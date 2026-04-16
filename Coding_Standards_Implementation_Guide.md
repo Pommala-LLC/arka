@@ -1,4 +1,4 @@
-# Arka Arka — Coding Standards Implementation Guide
+# Arka — Coding Standards Implementation Guide
 
 **Arka:** Arka — Enterprise Integration Arka
 **Baseline:** Java 21+ / Spring Framework 7.x / Spring Boot 4.x
