@@ -1,4 +1,4 @@
-# SPHUTA Arka Platform
+#  Arka Platform
 
 > **Status:** Architecture frozen — canonical reference document
 > **Last updated:** March 2026
@@ -42,11 +42,11 @@
 
 ## 1. Platform overview
 
-SPHUTA Arka is a flow-based communication platform for the JVM. It provides a modular, policy-driven framework for sending transactional messages across multiple channels. The architecture follows a shared-engine-plus-channel-edge model: a set of channel-agnostic shared capabilities form the engine, and each channel contributes its own edge modules for transport, message format, and channel-specific concerns.
+ Arka is a flow-based communication platform for the JVM. It provides a modular, policy-driven framework for sending transactional messages across multiple channels. The architecture follows a shared-engine-plus-channel-edge model: a set of channel-agnostic shared capabilities form the engine, and each channel contributes its own edge modules for transport, message format, and channel-specific concerns.
 
 The platform ships as Spring Boot starters. A client application adds a single Maven dependency and gets a production-ready communication runtime with startup validation, pluggable transport, recipient handling, and configurable flow definitions.
 
-Three editions serve different operational needs: OSS for self-managed open-source use, Enterprise (PaaS) for self-managed commercial deployments with operational hardening, and Cloud (SaaS) for fully managed delivery at `cloud.sphuta.net`.
+Three editions serve different operational needs: OSS for self-managed open-source use, Enterprise (PaaS) for self-managed commercial deployments with operational hardening, and Cloud (SaaS) for fully managed delivery at `cloud..net`.
 
 ---
 
@@ -56,10 +56,10 @@ Four standalone products. Each has its own repository, its own starters, and its
 
 | Product | Channel | Maven root | GitHub |
 |---|---|---|---|
-| SPHUTA Arka Email | Email | `sphuta-arka-email` | `Pommala-LLC/sphuta-arka-email` |
-| SPHUTA Arka SMS | SMS | `sphuta-arka-sms` | `Pommala-LLC/sphuta-arka-sms` |
-| SPHUTA Arka WhatsApp | WhatsApp | `sphuta-arka-whatsapp` | `Pommala-LLC/sphuta-arka-whatsapp` |
-| SPHUTA Arka Slack | Slack | `sphuta-arka-slack` | `Pommala-LLC/sphuta-arka-slack` |
+|  Arka Email | Email | `-arka-email` | `Pommala-LLC/-arka-email` |
+|  Arka SMS | SMS | `-arka-sms` | `Pommala-LLC/-arka-sms` |
+|  Arka WhatsApp | WhatsApp | `-arka-whatsapp` | `Pommala-LLC/-arka-whatsapp` |
+|  Arka Slack | Slack | `-arka-slack` | `Pommala-LLC/-arka-slack` |
 
 Each product follows the same architectural skeleton. A shared multi-channel core extraction happens only when genuine duplication becomes painful across three or more channels. Premature abstraction across channels is harder to reverse than boilerplate.
 
@@ -165,10 +165,10 @@ SaaS operational delivery (no new modules):
 | Tenant administration UI | Web console with tenant-aware screens |
 | Delegated tenant administration | Security + tenant + web console |
 | Tenant-scoped role-based UI | Tenant + security + web console extension |
-| Managed hosting | SPHUTA operational infrastructure |
-| Automatic upgrades | SPHUTA operational infrastructure |
-| Managed transport operations | SPHUTA operational infrastructure |
-| SLA-backed uptime | SPHUTA operational infrastructure |
+| Managed hosting |  operational infrastructure |
+| Automatic upgrades |  operational infrastructure |
+| Managed transport operations |  operational infrastructure |
+| SLA-backed uptime |  operational infrastructure |
 
 ### Tier capability counts
 
@@ -272,17 +272,17 @@ Three composition starters per channel. Composition artifacts own no code — th
 
 | Artifact | Tier |
 |---|---|
-| `sphuta-arka-email-starter` | OSS |
-| `sphuta-arka-email-starter-enterprise` | PaaS |
-| `sphuta-arka-email-starter-full` | SaaS |
+| `-arka-email-starter` | OSS |
+| `-arka-email-starter-enterprise` | PaaS |
+| `-arka-email-starter-full` | SaaS |
 
 **Example for WhatsApp:**
 
 | Artifact | Tier |
 |---|---|
-| `sphuta-arka-whatsapp-starter` | OSS |
-| `sphuta-arka-whatsapp-starter-enterprise` | PaaS |
-| `sphuta-arka-whatsapp-starter-full` | SaaS |
+| `-arka-whatsapp-starter` | OSS |
+| `-arka-whatsapp-starter-enterprise` | PaaS |
+| `-arka-whatsapp-starter-full` | SaaS |
 
 `starter-full` bundles security directly. Separate IdP bridge artifacts are SaaS add-ons delivered based on client decision.
 
@@ -544,7 +544,7 @@ Each channel has its own transport implementation. The transport SPI is the only
 ### Email transport (JavaMail)
 
 ```yaml
-sphuta.arka.email.transport:
+.arka.email.transport:
   connection-timeout: 5s
   read-timeout: 10s
   write-timeout: 10s
@@ -769,29 +769,29 @@ Additive SPIs (multiple beans supported):
 
 ### Phase 1 — Arka Email OSS
 
-Complete the Email OSS tier. `sphuta-arka-email-starter` bundles core + service + validation + provider-yaml + Email edge modules. The architecture, coding standards, and all SPIs are battle-tested here first.
+Complete the Email OSS tier. `-arka-email-starter` bundles core + service + validation + provider-yaml + Email edge modules. The architecture, coding standards, and all SPIs are battle-tested here first.
 
-Exit criteria: A client application adds `sphuta-arka-email-starter`, defines flows in YAML, and sends transactional emails with startup validation and recipient normalization — all on Java 21 / Spring Boot 4.x.
+Exit criteria: A client application adds `-arka-email-starter`, defines flows in YAML, and sends transactional emails with startup validation and recipient normalization — all on Java 21 / Spring Boot 4.x.
 
 ### Phase 2 — Arka Email PaaS (Enterprise)
 
-Add PaaS capabilities to Email. `sphuta-arka-email-starter-enterprise` bundles starter + async, retry, DB/hybrid providers, circuit breaker, observability, health, security, audit, outbox, idempotency, REST API, and web console.
+Add PaaS capabilities to Email. `-arka-email-starter-enterprise` bundles starter + async, retry, DB/hybrid providers, circuit breaker, observability, health, security, audit, outbox, idempotency, REST API, and web console.
 
 Exit criteria: Enterprise clients get async fan-out, retry, runtime-managed flows, observability, crash-safe outbox, duplicate prevention, role-aware web console, and RBAC — by swapping the starter dependency.
 
 ### Phase 3 — Arka WhatsApp OSS
 
-Apply the proven Arka pattern to WhatsApp. `sphuta-arka-whatsapp-starter` bundles core + service + validation + provider-yaml + WhatsApp OSS edge modules (contracts, Meta transport, Meta templates).
+Apply the proven Arka pattern to WhatsApp. `-arka-whatsapp-starter` bundles core + service + validation + provider-yaml + WhatsApp OSS edge modules (contracts, Meta transport, Meta templates).
 
 What carries over unchanged: dependency direction, `@ConditionalOnMissingBean` pluggability, classpath-presence activation, fail-fast prerequisites, tracking ID propagation, `ExecutionContextPropagator`, application code pattern, three-constructor exception discipline, error response shape.
 
 What is WhatsApp-specific: Meta Cloud API integration, 24-hour session window logic, template approval status, E.164 phone normalization, media message types, interactive messages, per-phone-number rate limit handling.
 
-Exit criteria: A client application adds `sphuta-arka-whatsapp-starter`, defines WhatsApp flows in YAML, and sends template or session messages through the Meta Cloud API.
+Exit criteria: A client application adds `-arka-whatsapp-starter`, defines WhatsApp flows in YAML, and sends template or session messages through the Meta Cloud API.
 
 ### Phase 4 — Arka WhatsApp PaaS (Enterprise)
 
-Same enterprise hardening pattern. `sphuta-arka-whatsapp-starter-enterprise` adds all PaaS capabilities plus webhook delivery status and WhatsApp console screens.
+Same enterprise hardening pattern. `-arka-whatsapp-starter-enterprise` adds all PaaS capabilities plus webhook delivery status and WhatsApp console screens.
 
 ### Phase 5 — Arka Email + WhatsApp SaaS
 
@@ -799,7 +799,7 @@ Add SaaS capabilities (tenant, DLQ, scheduled dispatch, typed client) to both ch
 
 ### Phase 6 — Cloud editions
 
-Fully managed SaaS at `cloud.sphuta.net`. Hosting, managed transport, tenant provisioning API, monitoring dashboards, SSO federation, SLA-backed uptime.
+Fully managed SaaS at `cloud..net`. Hosting, managed transport, tenant provisioning API, monitoring dashboards, SSO federation, SLA-backed uptime.
 
 ### Build ordering rationale
 
@@ -813,23 +813,23 @@ Email first → WhatsApp second. SMS is structurally closest to Email (next afte
 
 | Layer | Value |
 |---|---|
-| Parent POM | `sphuta-arka-email` |
-| GroupId | `net.sphuta.arka.email` |
-| Java package | `net.sphuta.arka.email` |
+| Parent POM | `-arka-email` |
+| GroupId | `net..arka.email` |
+| Java package | `net..arka.email` |
 | Spring property prefix | `arka.email` |
-| Module prefix | `sphuta-arka-email-{module}` |
-| GitHub | `Pommala-LLC/sphuta-arka-email` |
+| Module prefix | `-arka-email-{module}` |
+| GitHub | `Pommala-LLC/-arka-email` |
 
 ### WhatsApp
 
 | Layer | Value |
 |---|---|
-| Parent POM | `sphuta-arka-whatsapp` |
-| GroupId | `net.sphuta.arka.whatsapp` |
-| Java package | `net.sphuta.arka.whatsapp` |
+| Parent POM | `-arka-whatsapp` |
+| GroupId | `net..arka.whatsapp` |
+| Java package | `net..arka.whatsapp` |
 | Spring property prefix | `arka.whatsapp` |
-| Module prefix | `sphuta-arka-whatsapp-{module}` |
-| GitHub | `Pommala-LLC/sphuta-arka-whatsapp` |
+| Module prefix | `-arka-whatsapp-{module}` |
+| GitHub | `Pommala-LLC/-arka-whatsapp` |
 
 ---
 
@@ -838,36 +838,36 @@ Email first → WhatsApp second. SMS is structurally closest to Email (next afte
 Each channel is a standalone repository with the following structure:
 
 ```
-sphuta-arka-{channel}/
+-arka-{channel}/
 ├── pom.xml                              ← parent POM
 ├── README.md                            ← this document (channel-specific)
 ├── CODING_STANDARDS.md                  ← coding standards (shared baseline)
-├── sphuta-arka-{channel}-core/          ← contracts only
-├── sphuta-arka-{channel}-service/       ← send orchestration
-├── sphuta-arka-{channel}-validation/    ← startup validation
-├── sphuta-arka-{channel}-provider-yaml/ ← YAML flow source
-├── sphuta-arka-{channel}-provider-db/   ← DB flow source (PaaS)
-├── sphuta-arka-{channel}-provider-hybrid/ ← hybrid resolution (PaaS)
-├── sphuta-arka-{channel}-async/         ← async dispatch (PaaS)
-├── sphuta-arka-{channel}-retry-fixed/   ← fixed retry (PaaS)
-├── sphuta-arka-{channel}-circuit-breaker/ ← circuit breaker (PaaS)
-├── sphuta-arka-{channel}-observability/ ← metrics (PaaS)
-├── sphuta-arka-{channel}-health/        ← health indicators (PaaS)
-├── sphuta-arka-{channel}-security/      ← auth and RBAC (PaaS)
-├── sphuta-arka-{channel}-audit/         ← audit trail (PaaS)
-├── sphuta-arka-{channel}-outbox/        ← transactional outbox (PaaS)
-├── sphuta-arka-{channel}-idempotency/   ← duplicate prevention (PaaS)
-├── sphuta-arka-{channel}-web/           ← REST API (PaaS)
-├── sphuta-arka-{channel}-web-console/   ← admin UI (PaaS)
-├── sphuta-arka-{channel}-tenant/        ← multi-tenancy (SaaS)
-├── sphuta-arka-{channel}-dlq/           ← dead letter queue (SaaS)
-├── sphuta-arka-{channel}-scheduler/     ← scheduled dispatch (SaaS)
-├── sphuta-arka-{channel}-client/        ← typed client (SaaS)
-├── sphuta-arka-{channel}-starter/       ← OSS composition
-├── sphuta-arka-{channel}-starter-enterprise/ ← PaaS composition
-├── sphuta-arka-{channel}-starter-full/  ← SaaS composition
+├── -arka-{channel}-core/          ← contracts only
+├── -arka-{channel}-service/       ← send orchestration
+├── -arka-{channel}-validation/    ← startup validation
+├── -arka-{channel}-provider-yaml/ ← YAML flow source
+├── -arka-{channel}-provider-db/   ← DB flow source (PaaS)
+├── -arka-{channel}-provider-hybrid/ ← hybrid resolution (PaaS)
+├── -arka-{channel}-async/         ← async dispatch (PaaS)
+├── -arka-{channel}-retry-fixed/   ← fixed retry (PaaS)
+├── -arka-{channel}-circuit-breaker/ ← circuit breaker (PaaS)
+├── -arka-{channel}-observability/ ← metrics (PaaS)
+├── -arka-{channel}-health/        ← health indicators (PaaS)
+├── -arka-{channel}-security/      ← auth and RBAC (PaaS)
+├── -arka-{channel}-audit/         ← audit trail (PaaS)
+├── -arka-{channel}-outbox/        ← transactional outbox (PaaS)
+├── -arka-{channel}-idempotency/   ← duplicate prevention (PaaS)
+├── -arka-{channel}-web/           ← REST API (PaaS)
+├── -arka-{channel}-web-console/   ← admin UI (PaaS)
+├── -arka-{channel}-tenant/        ← multi-tenancy (SaaS)
+├── -arka-{channel}-dlq/           ← dead letter queue (SaaS)
+├── -arka-{channel}-scheduler/     ← scheduled dispatch (SaaS)
+├── -arka-{channel}-client/        ← typed client (SaaS)
+├── -arka-{channel}-starter/       ← OSS composition
+├── -arka-{channel}-starter-enterprise/ ← PaaS composition
+├── -arka-{channel}-starter-full/  ← SaaS composition
 ├── ... channel-specific edge modules ...
-└── sphuta-arka-{channel}-demo/          ← demo applications (never published)
+└── -arka-{channel}-demo/          ← demo applications (never published)
 ```
 
 ---
