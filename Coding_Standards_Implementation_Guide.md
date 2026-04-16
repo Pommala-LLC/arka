@@ -1,13 +1,13 @@
-# SPHUTA Platform — Coding Standards Implementation Guide
+# Arka Arka — Coding Standards Implementation Guide
 
-**Platform:** SPHUTA — Enterprise Integration Platform
+**Arka:** Arka — Enterprise Integration Arka
 **Baseline:** Java 21+ / Spring Framework 7.x / Spring Boot 4.x
 **Status:** Finalized and locked. Deviations require explicit review.
 
 > This guide operationalizes the General Coding Standards document.
 > It defines concrete templates, enforcement rules, and tooling gates
 > for every area the standards document leaves underspecified.
-> All SPHUTA platform modules must comply with this guide.
+> All Arka Arka modules must comply with this guide.
 
 ---
 
@@ -41,9 +41,9 @@
 
 **Minimum required: Java 21**
 
-No SPHUTA module is compatible with Java 17 or below.
+No Arka module is compatible with Java 17 or below.
 
-### Features actively used across the platform
+### Features actively used across the Arka
 
 | Version | Features |
 |---|---|
@@ -52,7 +52,7 @@ No SPHUTA module is compatible with Java 17 or below.
 | Java 17 | Records for DTOs and immutable value objects, switch expressions with `case ->` and `yield` |
 | Java 21 | Virtual threads via `VirtualThreadTaskExecutor`, `SequencedSet`, `List.getFirst()` |
 
-### Features deliberately not used platform-wide
+### Features deliberately not used Arka-wide
 
 | Feature | Decision |
 |---|---|
@@ -60,7 +60,7 @@ No SPHUTA module is compatible with Java 17 or below.
 | Sealed hierarchies | Use only for genuine algebraic types — not for open SPIs or strategy patterns |
 | Record patterns | Records are used for construction and accessor access only |
 | Scoped values | Not appropriate for production starters |
-| Structured concurrency | Virtual threads alone are sufficient for current platform needs |
+| Structured concurrency | Virtual threads alone are sufficient for current Arka needs |
 
 **Rule:** Do not add a Java feature to satisfy a checklist. Add it only when it makes the code meaningfully clearer.
 
@@ -138,16 +138,16 @@ Every module must define and lock its naming conventions:
 
 | Layer | Convention |
 |---|---|
-| Parent POM | `sphuta-{domain}-{subdomain}` |
-| Module artifact IDs | `sphuta-{domain}-{subdomain}-{module}` |
-| Base Java package | `net.sphuta.{domain}.{subdomain}` |
-| Spring property prefix | `sphuta.{domain}.{subdomain}` |
-| Auto-configuration package | `net.sphuta.{domain}.{subdomain}.{module}.autoconfigure` |
+| Parent POM | `Arka-{domain}-{subdomain}` |
+| Module artifact IDs | `Arka-{domain}-{subdomain}-{module}` |
+| Base Java package | `net.Arka.{domain}.{subdomain}` |
+| Spring property prefix | `Arka.{domain}.{subdomain}` |
+| Auto-configuration package | `net.Arka.{domain}.{subdomain}.{module}.autoconfigure` |
 
 ### Core package map template
 
 ```
-net.sphuta.{domain}.{subdomain}
+net.Arka.{domain}.{subdomain}
 ├── api              ← public consumer contracts only
 ├── spi              ← framework extension points only
 ├── model
@@ -230,7 +230,7 @@ No handwritten `.java` file may be placed in any package that also contains gene
 
 ### Library module API surface
 
-SPHUTA platform modules are primarily libraries and tooling, not web services.
+Arka Arka modules are primarily libraries and tooling, not web services.
 
 | Web-app concept | Library module equivalent |
 |---|---|
@@ -265,9 +265,9 @@ import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-// Block 5: SPHUTA platform-internal
-import net.sphuta.moduleA.api.SomeContract;
-import net.sphuta.moduleB.code.SomeCode;
+// Block 5: Arka Arka-internal
+import net.Arka.moduleA.api.SomeContract;
+import net.Arka.moduleB.code.SomeCode;
 ```
 
 Within each block, imports are sorted alphabetically. No exceptions.
@@ -503,7 +503,7 @@ The abstract base exception must define three constructors. All concrete excepti
  * <p>Every concrete exception carries a precise {@link ApplicationCode} —
  * never thrown without a code.
  *
- * <p>Three constructors per platform standard §13:
+ * <p>Three constructors per Arka standard §13:
  * 1-arg (code, default message), 2-arg (code + custom message),
  * 3-arg (code + message + cause).
  */
@@ -639,7 +639,7 @@ A missing or default timeout is a production bug. Every external transport must 
 
 ```yaml
 # Example — adapt to your transport
-sphuta.{domain}.{subdomain}.transport:
+Arka.{domain}.{subdomain}.transport:
   connection-timeout: 5s
   read-timeout: 10s
   write-timeout: 10s
@@ -1214,7 +1214,7 @@ Every `package-info.java` carries `@NullMarked` and a two-sentence Javadoc: (1) 
  * Exception classes that consume these codes live in the {@code exception} package.
  */
 @NullMarked
-package net.sphuta.domain.subdomain.code;
+package net.Arka.domain.subdomain.code;
 ```
 
 ```java
@@ -1225,7 +1225,7 @@ package net.sphuta.domain.subdomain.code;
  * Exceptions consume application codes from the {@code code} package.
  */
 @NullMarked
-package net.sphuta.domain.subdomain.exception;
+package net.Arka.domain.subdomain.exception;
 ```
 
 ```java
@@ -1236,7 +1236,7 @@ package net.sphuta.domain.subdomain.exception;
  * register beans that satisfy these contracts.
  */
 @NullMarked
-package net.sphuta.domain.subdomain.spi;
+package net.Arka.domain.subdomain.spi;
 ```
 
 ```java
@@ -1247,7 +1247,7 @@ package net.sphuta.domain.subdomain.spi;
  * Internal implementation details live in module-specific packages.
  */
 @NullMarked
-package net.sphuta.domain.subdomain.api;
+package net.Arka.domain.subdomain.api;
 ```
 
 ---
