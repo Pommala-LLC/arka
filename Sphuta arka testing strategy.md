@@ -1,4 +1,4 @@
-# SPHUTA Arka — Testing Strategy (Full Scope)
+#  Arka — Testing Strategy (Full Scope)
 
 > **Scope:** Complete testing strategy across all tiers (OSS / PaaS / SaaS) and all channels (Email, WhatsApp, Slack, SMS)
 > **Architecture:** Modular, classpath-activated, SPI-driven, shared engine + channel adapter
@@ -458,4 +458,4 @@ The test pyramid applies at every level: unit tests are always required, integra
 
 ---
 
-*SPHUTA Arka — Testing Strategy (Full Scope) — All Tiers, All Channels — Frozen Standard — March 2026*
+* Arka — Testing Strategy (Full Scope) — All Tiers, All Channels — Frozen Standard — March 2026*
