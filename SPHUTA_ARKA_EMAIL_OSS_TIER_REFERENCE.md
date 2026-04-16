@@ -1,4 +1,4 @@
-# SPHUTA Arka Email — OSS Tier Complete Reference
+#  Arka Email — OSS Tier Complete Reference
 
 > **Scope:** All application codes, exceptions, business rules, and validations for the OSS tier
 > **Modules covered:** 8 capability modules + 1 composition starter = 9 Maven artifacts
@@ -31,31 +31,31 @@ OSS is the pure synchronous core. No async, no retry, no DB/hybrid providers, no
 
 | Module | Artifact ID | Role |
 |---|---|---|
-| Core | `sphuta-arka-email-core` | Contracts, SPIs, models, codes, exceptions — OSS scope only |
-| Service | `sphuta-arka-email-service` | Default send orchestration (single-send, synchronous) |
-| Validation | `sphuta-arka-email-validation` | Startup flow configuration validation |
-| Provider YAML | `sphuta-arka-email-provider-yaml` | YAML-backed flow resolution |
+| Core | `-arka-email-core` | Contracts, SPIs, models, codes, exceptions — OSS scope only |
+| Service | `-arka-email-service` | Default send orchestration (single-send, synchronous) |
+| Validation | `-arka-email-validation` | Startup flow configuration validation |
+| Provider YAML | `-arka-email-provider-yaml` | YAML-backed flow resolution |
 
 ### Email edge capabilities (4 modules)
 
 | Module | Artifact ID | Role |
 |---|---|---|
-| Transport JavaMail | `sphuta-arka-email-transport-javamail` | SMTP transport with typed exception translation |
-| Recipient | `sphuta-arka-email-recipient` | Recipient normalization, validation, deduplication |
-| Message | `sphuta-arka-email-message` | MIME message construction and final message assembly |
-| Template Thymeleaf | `sphuta-arka-email-template-thymeleaf` | Thymeleaf-based template rendering |
+| Transport JavaMail | `-arka-email-transport-javamail` | SMTP transport with typed exception translation |
+| Recipient | `-arka-email-recipient` | Recipient normalization, validation, deduplication |
+| Message | `-arka-email-message` | MIME message construction and final message assembly |
+| Template Thymeleaf | `-arka-email-template-thymeleaf` | Thymeleaf-based template rendering |
 
 ### Composition (1 module)
 
 | Module | Artifact ID | Role |
 |---|---|---|
-| Starter | `sphuta-arka-email-starter` | Composition POM — bundles all 8 OSS modules. Owns no code. |
+| Starter | `-arka-email-starter` | Composition POM — bundles all 8 OSS modules. Owns no code. |
 
 ---
 
 ## 2. Application Codes — Complete Registry
 
-All OSS code enums live in `sphuta-arka-email-core` in the `net.sphuta.arka.email.code` package. Every code implements `ApplicationCode`.
+All OSS code enums live in `-arka-email-core` in the `net..arka.email.code` package. Every code implements `ApplicationCode`.
 
 Core contains **only** codes for OSS-active capabilities. PaaS modules own their own code families.
 
@@ -116,7 +116,7 @@ Provider resolution codes. Used by YAML provider. Sender/attachment resolution f
 | `EMAIL-PROV-4004` | `SENDER_REF_UNRESOLVABLE` | Sender reference could not be resolved | `SENDER` |
 | `EMAIL-PROV-4005` | `ATTACHMENT_REF_UNRESOLVABLE` | Attachment reference could not be resolved | `ATTACHMENT` |
 
-Note: `HYBRID_FALLBACK` (`EMAIL-PROV-5001`) lives in `sphuta-arka-email-provider-hybrid` (PaaS), not in core.
+Note: `HYBRID_FALLBACK` (`EMAIL-PROV-5001`) lives in `-arka-email-provider-hybrid` (PaaS), not in core.
 
 ---
 
@@ -197,7 +197,7 @@ Maps validation and configuration codes to HTTP error response categories. Used 
 
 ## 3. Exception Hierarchy
 
-All OSS exceptions live in `net.sphuta.arka.email.exception` within core. Every exception carries an `ApplicationCode` via `internalCode()`. Three constructors per platform standard.
+All OSS exceptions live in `net..arka.email.exception` within core. Every exception carries an `ApplicationCode` via `internalCode()`. Three constructors per platform standard.
 
 Core contains **only** exceptions thrown by OSS modules.
 
@@ -233,10 +233,10 @@ These exceptions are defined in their respective PaaS modules, not in core. They
 
 | Exception | Defined in module | HTTP |
 |---|---|---|
-| `EmailAsyncTimeoutException` | `sphuta-arka-email-async` | 504 |
-| `EmailTaskInterruptedException` | `sphuta-arka-email-async` | 503 |
-| `EmailTaskCancelledException` | `sphuta-arka-email-async` | 503 |
-| `BatchDispatcherUnavailableException` | `sphuta-arka-email-async` | 503 |
+| `EmailAsyncTimeoutException` | `-arka-email-async` | 504 |
+| `EmailTaskInterruptedException` | `-arka-email-async` | 503 |
+| `EmailTaskCancelledException` | `-arka-email-async` | 503 |
+| `BatchDispatcherUnavailableException` | `-arka-email-async` | 503 |
 
 ---
 
@@ -312,7 +312,7 @@ private HttpCode mapTransportCode(EmailTransportCode code) {
 
 ---
 
-### 5.1 `sphuta-arka-email-core`
+### 5.1 `-arka-email-core`
 
 **Role:** Pure contracts — APIs, SPIs, models, codes, exceptions. OSS scope only. Zero implementations.
 
@@ -357,7 +357,7 @@ private HttpCode mapTransportCode(EmailTransportCode code) {
 
 ---
 
-### 5.2 `sphuta-arka-email-service`
+### 5.2 `-arka-email-service`
 
 **Role:** Default send orchestration. Synchronous single-send in OSS.
 
@@ -396,7 +396,7 @@ No retry loop. No circuit breaker check. No async timeout. No idempotency check.
 
 ---
 
-### 5.3 `sphuta-arka-email-validation`
+### 5.3 `-arka-email-validation`
 
 **Role:** Startup flow configuration validation.
 
@@ -439,7 +439,7 @@ No master switch. Each toggle is an individually visible, reviewable decision.
 
 ---
 
-### 5.4 `sphuta-arka-email-provider-yaml`
+### 5.4 `-arka-email-provider-yaml`
 
 **Role:** YAML-backed flow resolution.
 
@@ -480,7 +480,7 @@ arka.email:
 
 ---
 
-### 5.5 `sphuta-arka-email-transport-javamail`
+### 5.5 `-arka-email-transport-javamail`
 
 **Role:** JavaMail SMTP transport with typed exception translation.
 
@@ -526,7 +526,7 @@ arka.email.transport:
 
 ---
 
-### 5.6 `sphuta-arka-email-recipient`
+### 5.6 `-arka-email-recipient`
 
 **Role:** Recipient normalization, validation, and deduplication.
 
@@ -576,7 +576,7 @@ Input (to, cc, bcc)
 
 ---
 
-### 5.7 `sphuta-arka-email-message`
+### 5.7 `-arka-email-message`
 
 **Role:** MIME message construction and final message assembly.
 
@@ -603,7 +603,7 @@ Input (to, cc, bcc)
 
 ---
 
-### 5.8 `sphuta-arka-email-template-thymeleaf`
+### 5.8 `-arka-email-template-thymeleaf`
 
 **Role:** Thymeleaf-based template rendering with template existence probing.
 
@@ -627,7 +627,7 @@ Input (to, cc, bcc)
 
 ---
 
-### 5.9 `sphuta-arka-email-starter`
+### 5.9 `-arka-email-starter`
 
 **Role:** Composition POM only. Owns no code.
 
@@ -712,42 +712,42 @@ In OSS, send is single-attempt — no retry loop. This classification applies wh
 
 ## 9. What Core Does NOT Contain
 
-Per the tier isolation rule, the following are **not** in `sphuta-arka-email-core`. Each is owned by its respective PaaS or SaaS module.
+Per the tier isolation rule, the following are **not** in `-arka-email-core`. Each is owned by its respective PaaS or SaaS module.
 
 ### Contracts owned by PaaS modules
 
 | Contract | Lives in module |
 |---|---|
-| `EmailBatchDispatcher` (API) | `sphuta-arka-email-async` |
-| `BatchSendResult` (API) | `sphuta-arka-email-async` |
-| `EmailRetryPolicy` (SPI) | `sphuta-arka-email-retry-fixed` |
-| `EmailCircuitBreaker` (SPI) | `sphuta-arka-email-circuit-breaker` |
-| `ExecutionContextPropagator` (SPI) | `sphuta-arka-email-async` |
-| `EmailThrottlePolicy` (SPI) | `sphuta-arka-email-async` |
+| `EmailBatchDispatcher` (API) | `-arka-email-async` |
+| `BatchSendResult` (API) | `-arka-email-async` |
+| `EmailRetryPolicy` (SPI) | `-arka-email-retry-fixed` |
+| `EmailCircuitBreaker` (SPI) | `-arka-email-circuit-breaker` |
+| `ExecutionContextPropagator` (SPI) | `-arka-email-async` |
+| `EmailThrottlePolicy` (SPI) | `-arka-email-async` |
 
 ### Contracts owned by SaaS modules
 
 | Contract | Lives in module |
 |---|---|
-| `TenantResolver` (SPI) | `sphuta-arka-email-tenant` |
+| `TenantResolver` (SPI) | `-arka-email-tenant` |
 
 ### Code families owned by PaaS modules
 
 | Family | Codes | Lives in module |
 |---|---|---|
-| `EmailAsyncCode` (`EMAIL-ASYNC-*`) | 6 | `sphuta-arka-email-async` |
-| `EmailBatchCode` (`EMAIL-BATCH-*`) | 6 | `sphuta-arka-email-async` |
-| `EmailPersistenceCode` (`EMAIL-PERSIST-*`) | 5 | `sphuta-arka-email-provider-db` |
-| `HYBRID_FALLBACK` (`EMAIL-PROV-5001`) | 1 | `sphuta-arka-email-provider-hybrid` |
+| `EmailAsyncCode` (`EMAIL-ASYNC-*`) | 6 | `-arka-email-async` |
+| `EmailBatchCode` (`EMAIL-BATCH-*`) | 6 | `-arka-email-async` |
+| `EmailPersistenceCode` (`EMAIL-PERSIST-*`) | 5 | `-arka-email-provider-db` |
+| `HYBRID_FALLBACK` (`EMAIL-PROV-5001`) | 1 | `-arka-email-provider-hybrid` |
 
 ### Exceptions owned by PaaS modules
 
 | Exception | Lives in module |
 |---|---|
-| `EmailAsyncTimeoutException` | `sphuta-arka-email-async` |
-| `EmailTaskInterruptedException` | `sphuta-arka-email-async` |
-| `EmailTaskCancelledException` | `sphuta-arka-email-async` |
-| `BatchDispatcherUnavailableException` | `sphuta-arka-email-async` |
+| `EmailAsyncTimeoutException` | `-arka-email-async` |
+| `EmailTaskInterruptedException` | `-arka-email-async` |
+| `EmailTaskCancelledException` | `-arka-email-async` |
+| `BatchDispatcherUnavailableException` | `-arka-email-async` |
 
 ---
 
@@ -756,8 +756,8 @@ Per the tier isolation rule, the following are **not** in `sphuta-arka-email-cor
 ```xml
 <!-- OSS starter — single dependency for consumers -->
 <dependency>
-    <groupId>net.sphuta.arka.email</groupId>
-    <artifactId>sphuta-arka-email-starter</artifactId>
+    <groupId>net..arka.email</groupId>
+    <artifactId>-arka-email-starter</artifactId>
     <version>${arka.email.version}</version>
 </dependency>
 ```
@@ -766,15 +766,15 @@ Per the tier isolation rule, the following are **not** in `sphuta-arka-email-cor
 
 | GroupId | ArtifactId |
 |---|---|
-| `net.sphuta.arka.email` | `sphuta-arka-email-core` |
-| `net.sphuta.arka.email` | `sphuta-arka-email-service` |
-| `net.sphuta.arka.email` | `sphuta-arka-email-validation` |
-| `net.sphuta.arka.email` | `sphuta-arka-email-provider-yaml` |
-| `net.sphuta.arka.email` | `sphuta-arka-email-transport-javamail` |
-| `net.sphuta.arka.email` | `sphuta-arka-email-recipient` |
-| `net.sphuta.arka.email` | `sphuta-arka-email-message` |
-| `net.sphuta.arka.email` | `sphuta-arka-email-template-thymeleaf` |
-| `net.sphuta.arka.email` | `sphuta-arka-email-starter` |
+| `net..arka.email` | `-arka-email-core` |
+| `net..arka.email` | `-arka-email-service` |
+| `net..arka.email` | `-arka-email-validation` |
+| `net..arka.email` | `-arka-email-provider-yaml` |
+| `net..arka.email` | `-arka-email-transport-javamail` |
+| `net..arka.email` | `-arka-email-recipient` |
+| `net..arka.email` | `-arka-email-message` |
+| `net..arka.email` | `-arka-email-template-thymeleaf` |
+| `net..arka.email` | `-arka-email-starter` |
 
 ---
 
